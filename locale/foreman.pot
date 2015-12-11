@@ -1,0 +1,28 @@
+# Foreman plugin foreman_host_extra_validator.
+# Copyright (C) 2015 Timo Goebel
+# This file is distributed under the same license as the foreman package.
+# Timo Goebel <timo.goebel@dm.de>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: foreman 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-11 09:48+0100\n"
+"PO-Revision-Date: 2015-12-11 09:48+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Default regex the name of a host is validated against"
+msgstr ""
+
+msgid "This plugin adds extra validations to a host."
+msgstr ""
+
+msgid "must match regex /%s/"
+msgstr ""

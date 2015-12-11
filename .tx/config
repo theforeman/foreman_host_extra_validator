@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[foreman.foreman_host_extra_validator]
+file_filter = locale/<lang>/foreman_host_extra_validator.po
+source_file = locale/foreman_host_extra_validator.pot
+source_lang = en
+type = PO
