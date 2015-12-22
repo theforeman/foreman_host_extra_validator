@@ -1,14 +1,16 @@
 class Setting
-  class HostValidation < ::Setting
+  class ForemanHostExtraValidator < ::Setting
     def self.load_defaults
-      return unless ActiveRecord::Base.connection.table_exists?('settings')
+      # Check the table exists
       return unless super
 
-      Setting.transaction do
+      self.transaction do
         [
-          set('host_name_validation_regex', _('Default regex the name of a host is validated against'), '^[a-zA-Z0-9-_]+$')
-        ].compact.each { |s| create s.update(:category => 'Setting::HostValidation') }
+          self.set('host_name_validation_regex', _('Default regex the name of a host is validated against'), '^[a-zA-Z0-9-_]+$')
+        ].compact.each { |s| self.create! s.update(:category => 'Setting::ForemanHostExtraValidator') }
       end
+
+      true
     end
   end
 end
