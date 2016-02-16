@@ -12,7 +12,7 @@ module ForemanHostExtraValidator
                                                                                                                        end
     end
 
-    initializer 'foreman_host_extra_validator.register_plugin', :after => :finisher_hook do |_app|
+    initializer 'foreman_host_extra_validator.register_plugin', :before => :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_host_extra_validator do
       end
     end
