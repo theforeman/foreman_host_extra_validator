@@ -14,6 +14,7 @@ module ForemanHostExtraValidator
 
     initializer 'foreman_host_extra_validator.register_plugin', :before => :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_host_extra_validator do
+        requires_foreman '>= 1.11'
       end
     end
 
@@ -21,7 +22,7 @@ module ForemanHostExtraValidator
       begin
         Host::Managed.send(:include, ForemanHostExtraValidator::HostExtensions)
       rescue => e
-        Rails.logger.warn "ForemanPluginTemplate: skipping engine hook (#{e})\n#{e.backtrace}"
+        Rails.logger.warn "ForemanHostExtraValidator: skipping engine hook (#{e})\n#{e.backtrace}"
       end
     end
 

@@ -1,31 +1,27 @@
 require 'test_plugin_helper'
 
-class ForemanPluginTemplateTest < ActiveSupport::TestCase
+class ForemanHostExtraValidatorTest < ActiveSupport::TestCase
   setup do
-    Setting::HostValidation.load_defaults
+    Setting::ForemanHostExtraValidator.load_defaults
     disable_orchestration
     User.current = User.find_by_login 'admin'
   end
 
-  test '#validate_name_regex should return regex from setting when no regex is inherited' do
-    regex = '^[0-9]+$'
-    Setting[:host_name_validation_regex] = regex
-    host = FactoryGirl.build(:host, :managed)
-    assert_equal regex, host.validate_name_regex
-  end
+  context 'with validation regex' do
+    setup do
+      Setting[:host_name_validation_regex] = '^[0-9]+$'
+      @host = FactoryGirl.build(:host)
+    end
 
-  test 'host should validate when host name matches regex' do
-    regex = '^[0-9]+$'
-    Setting[:host_name_validation_regex] = regex
-    host = Host.new name: '054354'
-    assert host.valid?
-  end
+    test 'host should validate from settings' do
+      @host.name = '054354'
+      assert_valid @host
+    end
 
-  test 'host should not validate when host name does not match regex' do
-    regex = '^[0-9]+$'
-    Setting[:host_name_validation_regex] = regex
-    host = Host.new name: 'invalidhostname'
-    refute host.valid?
-    assert_includes host.errors[:name], "must match regex /#{regex}/"
+    test 'host should not validate when host name does not match regex' do
+      @host.name = 'invalidhostname'
+      refute_valid @host
+      assert_includes @host.errors[:name], "must match regex /#{Setting[:host_name_validation_regex]}/"
+    end
   end
 end

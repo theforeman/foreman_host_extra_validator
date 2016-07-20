@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   # rubocop:enable Date
   s.authors     = ['Timo Goebel']
   s.email       = ['timo.goebel@dm.de']
-  s.homepage    = 'https://github.com/FILIADATAGmbH/'
+  s.homepage    = 'https://github.com/FILIADATAGmbH/foreman_host_extra_validator'
   s.summary     = 'This plugin adds extra validations to a host.'
   # also update locale/gemspec.rb
   s.description = 'This plugin adds extra validations to a host.'
