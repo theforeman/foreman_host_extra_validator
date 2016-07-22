@@ -4,7 +4,7 @@ class ForemanHostExtraValidatorTest < ActiveSupport::TestCase
   setup do
     Setting::ForemanHostExtraValidator.load_defaults
     disable_orchestration
-    User.current = User.find_by_login 'admin'
+    User.current = FactoryGirl.build(:user, :admin)
   end
 
   context 'with validation regex' do
@@ -23,5 +23,20 @@ class ForemanHostExtraValidatorTest < ActiveSupport::TestCase
       refute_valid @host
       assert_includes @host.errors[:name], "must match regex /#{Setting[:host_name_validation_regex]}/"
     end
+
+    test 'host should validate from hostgroup parameter' do
+      hostgroup = FactoryGirl.create(:hostgroup)
+      @host.hostgroup = hostgroup
+      FactoryGirl.create(:hostgroup_parameter, :name => 'host_name_validation_regex', :value => '^[a-z]+$', :hostgroup => hostgroup)
+
+      assert_equal '^[a-z]+$', @host.send(:validate_name_regex)
+      @host.hostname = 'abcdef'
+      assert_valid @host
+
+      @host.hostname = '1234'
+      refute_valid @host
+      assert_includes @host.errors[:name], "must match regex /^[a-z]+$/"
+    end
+
   end
 end
