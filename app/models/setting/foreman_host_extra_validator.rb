@@ -6,7 +6,7 @@ class Setting
 
       self.transaction do
         [
-          self.set('host_name_validation_regex', _('Default regex the name of a host is validated against'), '^[a-zA-Z0-9-_]+$')
+          self.set('host_name_validation_regex', _('Default regex the name of a host is validated against'), '^[a-zA-Z0-9\-_]+$')
         ].compact.each { |s| self.create! s.update(:category => 'Setting::ForemanHostExtraValidator') }
       end
 
