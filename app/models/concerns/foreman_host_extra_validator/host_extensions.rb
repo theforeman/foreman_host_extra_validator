@@ -13,7 +13,7 @@ module ForemanHostExtraValidator
     private
 
     def validate_name_regex
-      host_inherited_params['host_name_validation_regex'] || Setting[:host_name_validation_regex]
+      inherited_params_hash.dig('host_name_validation_regex', :value) || Setting[:host_name_validation_regex]
     end
   end
 end

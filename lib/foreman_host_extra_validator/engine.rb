@@ -14,7 +14,7 @@ module ForemanHostExtraValidator
 
     initializer 'foreman_host_extra_validator.register_plugin', :before => :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_host_extra_validator do
-        requires_foreman '>= 1.11'
+        requires_foreman '>= 1.18'
       end
     end
 
