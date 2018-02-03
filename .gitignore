@@ -10,3 +10,4 @@ locale/*/*.pox
 locale/*/LC_MESSAGES
 Gemfile.lock
 *.gem
+.idea/
