@@ -1,4 +1,4 @@
-require File.expand_path('../lib/foreman_host_extra_validator/version', __FILE__)
+require File.expand_path('lib/foreman_host_extra_validator/version', __dir__)
 require 'date'
 
 Gem::Specification.new do |s|

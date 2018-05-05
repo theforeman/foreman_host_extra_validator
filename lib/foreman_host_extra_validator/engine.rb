@@ -5,7 +5,7 @@ module ForemanHostExtraValidator
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
 
     initializer 'foreman_host_extra_validator.load_default_settings', :before => :load_config_initializers do |_app|
-      require_dependency File.expand_path('../../../app/models/setting/foreman_host_extra_validator.rb', __FILE__) if begin
+      require_dependency File.expand_path('../../app/models/setting/foreman_host_extra_validator.rb', __dir__) if begin
                                                                                                                          Setting.table_exists?
                                                                                                                        rescue
                                                                                                                          (false)
@@ -27,7 +27,7 @@ module ForemanHostExtraValidator
     end
 
     initializer 'foreman_host_extra_validator.register_gettext', after: :load_config_initializers do |_app|
-      locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
+      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
       locale_domain = 'foreman_host_extra_validator'
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
