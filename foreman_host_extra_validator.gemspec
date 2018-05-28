@@ -4,6 +4,7 @@ require 'date'
 Gem::Specification.new do |s|
   s.name        = 'foreman_host_extra_validator'
   s.version     = ForemanHostExtraValidator::VERSION
+  s.license     = 'GPL-3.0'
   # rubocop:disable Date
   s.date        = Date.today.to_s
   # rubocop:enable Date
