@@ -7,6 +7,7 @@ module ForemanHostExtraValidator
 
     def validate_name_by_regex
       return unless validate_name_regex.present?
+
       errors.add(:name, _('must match regex /%s/') % validate_name_regex) unless shortname =~ /#{validate_name_regex}/
     end
 

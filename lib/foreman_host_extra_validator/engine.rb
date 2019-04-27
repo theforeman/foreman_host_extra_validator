@@ -7,8 +7,8 @@ module ForemanHostExtraValidator
     initializer 'foreman_host_extra_validator.load_default_settings', :before => :load_config_initializers do |_app|
       require_dependency File.expand_path('../../app/models/setting/foreman_host_extra_validator.rb', __dir__) if begin
                                                                                                                          Setting.table_exists?
-                                                                                                                       rescue
-                                                                                                                         (false)
+                                                                                                                  rescue
+                                                                                                                    (false)
                                                                                                                        end
     end
 
