@@ -20,9 +20,15 @@ Gemspec/OrderedDependencies:
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
 # Offense count: 1
 # Cop supports --auto-correct.
 Lint/ScriptPermission:
+  Enabled: false
+
+Performance/RegexpMatch:
   Enabled: false
 
 # Offense count: 1
@@ -36,6 +42,18 @@ Rails/Blank:
 # SupportedStyles: annotated, template, unannotated
 Style/FormatStringToken:
   EnforcedStyle: unannotated
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
 
 # Offense count: 1
 # Cop supports --auto-correct.

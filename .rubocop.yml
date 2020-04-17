@@ -2,8 +2,8 @@ inherit_from:
   - .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.2
-  TargetRailsVersion: 5.1
+  TargetRubyVersion: 2.5
+  TargetRailsVersion: 5.2
 
 Rails:
   Enabled: true
@@ -20,7 +20,7 @@ Style/HashSyntax:
     - hash_rockets
 
 # Do not limit line length so much
-Metrics/LineLength:
+Layout/LineLength:
     Max: 385
 
 Metrics/MethodLength:
