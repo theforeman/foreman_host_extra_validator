@@ -4,17 +4,19 @@ module ForemanHostExtraValidator
 
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
 
-    initializer 'foreman_host_extra_validator.load_default_settings', :before => :load_config_initializers do |_app|
-      require_dependency File.expand_path('../../app/models/setting/foreman_host_extra_validator.rb', __dir__) if begin
-                                                                                                                    Setting.table_exists?
-                                                                                                                  rescue
-                                                                                                                    (false)
-                                                                                                                  end
-    end
-
     initializer 'foreman_host_extra_validator.register_plugin', :before => :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_host_extra_validator do
-        requires_foreman '>= 1.18'
+        requires_foreman '>= 3.0.0'
+
+        settings do
+          category(:host_extra_validator, N_('Host Extra Validator')) do
+            setting('host_name_validation_regex',
+                    description:  N_('Default regex the name of a host is validated against'),
+                    type: :string,
+                    default: '^[a-zA-Z0-9\-_]+$',
+                    full_name: N_('Regular expresssion'))
+          end
+        end
       end
     end
 
