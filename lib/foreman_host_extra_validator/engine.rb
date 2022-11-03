@@ -4,6 +4,13 @@ module ForemanHostExtraValidator
 
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
 
+    # Add any db migrations
+    initializer 'foreman_host_extra_validator.load_app_instance_data' do |app|
+      ForemanHostExtraValidator::Engine.paths['db/migrate'].existent.each do |path|
+        app.config.paths['db/migrate'] << path
+      end
+    end
+
     initializer 'foreman_host_extra_validator.register_plugin', :before => :finisher_hook do |_app|
       Foreman::Plugin.register :foreman_host_extra_validator do
         requires_foreman '>= 3.0.0'
