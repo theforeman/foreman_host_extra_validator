@@ -2,7 +2,6 @@ require 'test_plugin_helper'
 
 class ForemanHostExtraValidatorTest < ActiveSupport::TestCase
   setup do
-    Setting::ForemanHostExtraValidator.load_defaults
     disable_orchestration
     User.current = FactoryBot.build(:user, :admin)
   end
