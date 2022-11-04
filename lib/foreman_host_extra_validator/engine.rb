@@ -18,7 +18,7 @@ module ForemanHostExtraValidator
         settings do
           category(:host_extra_validator, N_('Host Extra Validator')) do
             setting('host_name_validation_regex',
-                    description:  N_('Default regex the name of a host is validated against'),
+                    description: N_('Default regex the name of a host is validated against'),
                     type: :string,
                     default: '^[a-zA-Z0-9\-_]+$',
                     full_name: N_('Regular expresssion'))
